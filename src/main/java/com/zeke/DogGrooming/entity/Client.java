@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,10 +34,15 @@ public class Client {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToMany(mappedBy = "client",
+	@OneToMany(
 			cascade = CascadeType.ALL)
+	@JoinColumn(name = "client_id")
 	private List<Dog> dogs;
 
+	public Client() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Client(String firstName, String lastName, String tel, String email) {
 		super();
 		this.firstName = firstName;

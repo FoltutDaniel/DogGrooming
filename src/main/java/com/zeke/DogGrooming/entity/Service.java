@@ -28,15 +28,17 @@ public class Service {
 	@Column(name = "time_required")
 	private int timeRequired;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "dog_id")
-	private Dog dog;
+	
 
 	public Service(String serviceName, float cost, int timeRequired) {
 		super();
 		this.serviceName = serviceName;
 		this.cost = cost;
 		this.timeRequired = timeRequired;
+	}
+	
+	public Service() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getServiceName() {
@@ -63,18 +65,13 @@ public class Service {
 		this.timeRequired = timeRequired;
 	}
 
-	public Dog getDog() {
-		return dog;
-	}
 
-	public void setDog(Dog dog) {
-		this.dog = dog;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Service [id=" + id + ", serviceName=" + serviceName + ", cost=" + cost + ", timeRequired="
-				+ timeRequired + ", dog=" + dog + "]";
+				+ timeRequired + ", dog=" + "]";
 	}
 	
 	

@@ -34,12 +34,8 @@ public class Dog {
 	@Column(name = "age")
 	private int age;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "client_id")
-	private Client client;
-
-	@OneToMany(mappedBy = "dog", 
-				cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "dog_id")
 	private List<Service> services;
 	
 	public Dog(String dogName, String breed, int age) {
@@ -49,6 +45,9 @@ public class Dog {
 		this.age = age;
 	}
 
+	public Dog() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getDogName() {
 		return dogName;
 	}
@@ -73,13 +72,6 @@ public class Dog {
 		this.age = age;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 	
 	public void addService(Service tempService) {
 		if(this.services == null) {
@@ -91,7 +83,7 @@ public class Dog {
 
 	@Override
 	public String toString() {
-		return "Dog [id=" + id + ", dogName=" + dogName + ", breed=" + breed + ", age=" + age + ", client=" + client
+		return "Dog [id=" + id + ", dogName=" + dogName + ", breed=" + breed + ", age=" + age 
 				+ ", services=" + services + "]";
 	}
 	
